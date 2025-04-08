@@ -1,0 +1,6 @@
+@FMSBay_HostAddress = http://localhost:5003
+
+GET {{FMSBay_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
