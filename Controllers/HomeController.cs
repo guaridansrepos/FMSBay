@@ -22,7 +22,7 @@ namespace FMSBay.Controllers
 
             // -------------------- CONTACT FORM --------------------
 
-            [HttpGet("GetAll")]
+       [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllContacts()
         {
             var result = await _service.GetAllAsync();
@@ -37,14 +37,7 @@ namespace FMSBay.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateContact([FromBody] ContactFormDTO dto)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            var created = await _service.CreateAsync(dto);
-            return CreatedAtAction(nameof(GetContactById), new { id = created.Id }, created);
-        }
+      
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContact(int id, [FromBody] ContactFormDTO dto)
@@ -112,12 +105,6 @@ namespace FMSBay.Controllers
             return NoContent();
         }
 
-        [HttpGet("LoanTypes/Dropdown")]
-        public async Task<IActionResult> GetLoanTypeDropdown()
-        {
-            var result = await _service.GetDropdownListAsync();
-            return Ok(result);
-        }
     }
 
 }
